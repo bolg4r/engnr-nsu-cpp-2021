@@ -58,7 +58,7 @@ int main(int num_arg, char *argv[]) {
     file.open(filename, std::ios::binary);
 
     if (file.is_open()){
-        if(strcmp(mode,"adler32") == 0){
+        if(mode=="adler32"){
             std::cout << std::hex << adler32(file) << std::endl;
         }else {
             std::cout << std::hex << sum64(file) << std::endl;
