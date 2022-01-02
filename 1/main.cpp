@@ -43,15 +43,15 @@ int main(int num_arg, char *argv[]) {
         if (strcmp(argv[1],"-m")== 0 && (strcmp(argv[2],"adler32")==0 || strcmp(argv[2],"sum64")== 0)){
             mode = argv[2];
             filename = argv[1];
-        }
-        if (strcmp(argv[2], "-m")== 0 && (strcmp(argv[3],"adler32")==0 || strcmp(argv[3],"sum64")== 0)) {
-            mode = argv[3];
-            filename = argv[1];
-        }
-        else {
-            std::cerr << "Error! Arguments are entered incorrectly." << std::endl;
-            help(std::cerr);
-            return 1;
+        }else {
+            if (strcmp(argv[2], "-m") == 0 && (strcmp(argv[3], "adler32") == 0 || strcmp(argv[3], "sum64") == 0)) {
+                mode = argv[3];
+                filename = argv[1];
+            } else {
+                std::cerr << "Error! Arguments are entered incorrectly." << std::endl;
+                help(std::cerr);
+                return 1;
+            }
         }
     }
 
