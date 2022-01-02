@@ -57,17 +57,18 @@ int main(int num_arg, char *argv[]) {
 
     file.open(filename, std::ios::binary);
 
-    if (file.is_open()){
+    if (!(file.is_open())){
+        std::cerr << "Error! File is not found"<<std::endl;
+        help(std::cerr);
+        return 1;
+    }
+    else {
+
         if(mode == "adler32"){
             std::cout << std::hex << adler32(file) << std::endl;
         } else {
             std::cout << std::hex << sum64(file) << std::endl;
         }
-    }
-    else {
-        std::cerr << "Error! File is not found"<<std::endl;
-        help(std::cerr);
-        return 1;
     }
 
 
