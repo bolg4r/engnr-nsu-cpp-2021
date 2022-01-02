@@ -31,6 +31,7 @@ int main(int num_arg, char *argv[]) {
     if (num_arg == 2){
         if(!(strcmp(argv[1], "-h"))){
             help(std::cout);
+            return 0;
         }
         else{
             std::cerr<<"Arguments are entered incorrectly";
@@ -48,7 +49,7 @@ int main(int num_arg, char *argv[]) {
                 mode = argv[3];
                 filename = argv[1];
             } else {
-                std::cerr << "Error! Arguments are entered incorrectly." << std::endl;
+                std::cerr << "Error! Arguments are entered uncorrectly." << std::endl;
                 help(std::cerr);
                 return 1;
             }
