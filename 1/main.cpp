@@ -43,7 +43,7 @@ int main(int num_arg, char *argv[]) {
     if (num_arg == 4){
         if (strcmp(argv[1],"-m") == 0 && (strcmp(argv[2],"adler32") ==0 || strcmp(argv[2],"sum64")== 0)){
             mode = argv[2];
-            filename = argv[1];
+            filename = argv[3];
         }else {
             if (strcmp(argv[2], "-m") == 0 && (strcmp(argv[3], "adler32") == 0 || strcmp(argv[3], "sum64") == 0)) {
                 mode = argv[3];
@@ -64,7 +64,6 @@ int main(int num_arg, char *argv[]) {
         return 1;
     }
     else {
-
         if(mode == "adler32"){
             std::cout << std::hex << adler32(file) << std::endl;
         } else {
