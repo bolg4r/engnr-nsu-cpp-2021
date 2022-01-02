@@ -40,11 +40,11 @@ int main(int num_arg, char *argv[]) {
     }
 
     if (num_arg == 4){
-        if (!strcmp(argv[1],"-m") && (!strcmp(argv[2],"adler32") || !strcmp(argv[2],"sum64"))){
+        if (strcmp(argv[1],"-m")== 0 && (strcmp(argv[2],"adler32")==0 || strcmp(argv[2],"sum64")==0)){
             mode = argv[2];
             filename = argv[1];
         }
-        if (!strcmp(argv[2], "-m") && (!strcmp(argv[3],"adler32") || !strcmp(argv[3],"sum64"))) {
+        if (strcmp(argv[2], "-m")== 0 && (strcmp(argv[3],"adler32")==0 || strcmp(argv[3],"sum64")==0)) {
             mode = argv[3];
             filename = argv[1];
         }
@@ -58,10 +58,9 @@ int main(int num_arg, char *argv[]) {
     file.open(filename, std::ios::binary);
 
     if (file.is_open()){
-        if(mode == "adler32"){
+        if(strcmp(mode,"adler32") == 0){
             std::cout << std::hex << adler32(file) << std::endl;
-        }
-        if(mode == "sum64"){
+        }else {
             std::cout << std::hex << sum64(file) << std::endl;
         }
     }
