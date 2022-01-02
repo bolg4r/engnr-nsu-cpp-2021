@@ -4,7 +4,6 @@
 
 #include "Hash.h"
 #include <iostream>
-#include <fstream>
 #include <cstdint>
 
 uint32_t adler32( std::istream &file ){
@@ -19,19 +18,19 @@ uint32_t adler32( std::istream &file ){
 }
 
 uint64_t sum64( std::istream &file ){
-    uint64_t sum = 0, end = 0, result = 0;
-    unsigned char ch;
-    while (file.read((char*) &ch, sizeof(unsigned char))){
-        if(end == 8){
+    uint64_t sum = 0, point = 0, result = 0;
+    unsigned char sig;
+    while (file.read((char*) &sig, sizeof(unsigned char))){
+        if(point == 8){
             sum += result;
             result = 0;
-            end = 0;
+            point = 0;
         }
         result = result << 8;
-        result += ch;
-        end++;
+        result += sig;
+        point++;
     }
-    sum = sum+result;
-    return sum;
+
+    return sum + result;
 }
 
