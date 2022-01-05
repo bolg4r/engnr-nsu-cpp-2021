@@ -7,26 +7,85 @@
 #include "../comm.h"
 
 
-TEST(test1, test_1) {
-std::string test = "# myVar = -14 / 5\n"
-                   "PUSH -14\n"
-                   "PUSH 5\n"
-                   "DIV\n"
-                   "PEEK myVar\n"
-                   "# PRINT (9 - myVar) * 20\n"
-                   "POP\n"
-                   "PUSH 9\n"
-                   "PUSH myVar\n"
-                   "MINUS\n"
-                   "PUSH 20\n"
-                   "MUL\n"
+TEST(two_plus_two, test_1) {
+std::string test = "#Nikita Provotorov the best\n"
+                   "PUSH 2\n"
+                   "PUSH 2\n"
+                   "PLUS\n"
                    "PRINT";
 testing::internal::CaptureStdout();
 std::stringstream in_s(test);
 std::ifstream in;
-std::string result = "220\n";
+std::string result = "4\n";
 procces(in_s, in, 3);
 std::string output = testing::internal::GetCapturedStdout();
 std::cout << output;
 EXPECT_EQ(output, result);
 }
+
+TEST(medium, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH 2\n"
+                       "PUSH 10\n"
+                       "PEEK var\n" //10
+                       "DIV\n" //5
+                       "PUSH var\n"
+                       "PUSH 8\n"
+                       "MUL\n" //40
+                       "PUSH var"
+                       "MINUS" //-35
+                       "ABS"
+                       "PRINT";
+
+
+
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+    std::string result = "35\n";
+    procces(in_s, in, 3);
+    std::string output = testing::internal::GetCapturedStdout();
+    std::cout << output;
+    EXPECT_EQ(output, result);
+}
+
+TEST(Plus_exc, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH 2\n"
+                       "PLUS\n"
+                       "PRINT\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+
+    EXPECT_THROW(procces(in_s, in, 3), PlusException);
+}
+
+TEST(Some_exc, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH 2\n"
+                       "Push 4\n"
+                       "NikitaTheBest\n"
+                       "MUL\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+    std::string result = "4\n";
+    procces(in_s, in, 3);
+    EXPECT_THROW(procces(in_s, in, 3), NoCommandException);
+
+}
+
+TEST(Really_big, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH 942493935452545479986\n"
+                       "PUSH 8996979999759659569755\n"
+                       "PLUS\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+
+    EXPECT_THROW(procces(in_s, in, 3), SafeIntException);
+}
+
+
