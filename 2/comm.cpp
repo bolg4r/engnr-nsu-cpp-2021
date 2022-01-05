@@ -173,13 +173,18 @@ Comm *Obrer::obr(std::vector<std::string> commands) {
 
 }
 
-void procces(std::stringstream &test_s, std::ifstream &ty, int argnum) {
+void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
     std::string command_line;
     std::vector<std::string> ph;
     Comm *calc_command;
     Obrer proccessor;
     ContextExecution data;
-    if (argnum == 2){
+
+
+
+
+
+    if (kind == 2){
         while (getline(ty, command_line)) {
             std::stringstream str_new(command_line);
             std::vector<std::string> command; //empty lines(?)
@@ -196,7 +201,7 @@ void procces(std::stringstream &test_s, std::ifstream &ty, int argnum) {
         }
     }
 
-    if (argnum == 1){
+    if (kind == 1){
         while (std::getline(std::cin,command_line)) {
             std::stringstream str_new(command_line);
             std::vector<std::string> command; //empty lines(?)
@@ -211,6 +216,23 @@ void procces(std::stringstream &test_s, std::ifstream &ty, int argnum) {
             delete calc_command;
 
         }
+    }
+    if (kind == 3){
+        while (std::getline(test_s,command_line)) {
+            std::stringstream str_new(command_line);
+            std::vector<std::string> command; //empty lines(?)
+            std::stringstream str(command_line);
+            std::string com;
+            while (getline(str,com,' ')){
+                ph.push_back(com);
+            }
+            calc_command = proccessor.obr(ph);
+            calc_command->act(data,ph);
+            ph.clear();
+            delete calc_command;
+
+        }
+
     }
 }
 

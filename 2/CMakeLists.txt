@@ -4,6 +4,7 @@ project(pluss_2_2)
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(libs/SafeInt)
-
-
-add_executable(Calculator main.cpp comm.cpp comm.h)
+add_subdirectory(libs/googletest)
+enable_testing()
+include_directories(libs/googletest/googletest/include)
+add_executable(Calculator main.cpp comm.cpp comm.h tests/tests.cpp)
