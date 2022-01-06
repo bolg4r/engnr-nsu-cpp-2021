@@ -41,9 +41,9 @@ void Abs::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.empty()) {
         throw AbsException();
     } else {
-        SafeInt<int64_t> a = context.vals.top();
+        int64_t a = context.vals.top();
         if (a < 0) {
-            a = -1*a;
+            SafeMultiply(a,-1,a);
         }
         context.vals.pop();
         context.vals.push(a);
@@ -112,7 +112,7 @@ void Print::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.empty()){
         throw PrintException();
     } else{
-        std::cout<<(int64_t) context.vals.top() << std::endl;
+        std::cout<<(int64_t)context.vals.top() << std::endl;
     }
 }
 
@@ -151,11 +151,6 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
     Comm *calc_command;
     Obrer proccessor;
     ContextExecution data;
-
-
-
-
-
     if (kind == 2){
         while (getline(ty, command_line)) {
             if (command_line.empty()){
