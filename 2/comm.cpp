@@ -36,24 +36,6 @@ PopException::PopException(std::string exc) {
 }
 
 
-/*Push::Push(std::string &args) : Comm(args) {}
-
-void Push::comm(ContextExecution &context_execution) {
-    if (is_number(params)) {
-        int64_t result{}; //delete nahui
-        auto[ptr, ec]{std::from_chars(params.data(), params.data() + params.size(), result)};
-        if (ec == std::errc::result_out_of_range) { //если ошибка
-            throw OverflowException();
-        }
-        context_execution.stack.push(result);
-    } else {
-        auto elem = context_execution.variables.find(params); //хуета
-        if (elem == context_execution.variables.end()) {
-            throw PushException();
-        } else context_execution.stack.push(elem->second);
-    }
-}*/
-
 void Push::act(ContextExecution &context, std::vector<std::string> str) {
     if (is_number(str[1])) {
         context.vals.push(std::stoll(str[1]));
@@ -86,10 +68,11 @@ void Plus::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.size()<2) {
         throw PlusException();
     } else {
-        SafeInt<int64_t> a = context.vals.top();
+        int64_t a = context.vals.top();
         context.vals.pop();
-        SafeInt<int64_t> b = context.vals.top();
-        SafeInt<int64_t> res = a + b;
+        int64_t b = context.vals.top();
+        int64_t res;
+        SafeAdd(a,b,res);
         context.vals.pop();
         context.vals.push(res);
     }
@@ -100,10 +83,11 @@ void Minus::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.size()<2) {
         throw MinusException();
     } else {
-        SafeInt<int64_t> a = context.vals.top();
+        int64_t a = context.vals.top();
         context.vals.pop();
-        SafeInt<int64_t> b = context.vals.top();
-        SafeInt<int64_t> res = a - b;
+        int64_t b = context.vals.top();
+        int64_t res;
+        SafeSubtract(b,a,res);
         context.vals.pop();
         context.vals.push(res);
     }
@@ -113,11 +97,12 @@ void Div::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.size()<2) {
         throw DivException();
     } else {
-        SafeInt<int64_t> a = context.vals.top();
+        int64_t a = context.vals.top();
         context.vals.pop();
         if (a==0) {throw ZeroException();}
-        SafeInt<int64_t> b = context.vals.top();
-        SafeInt<int64_t> res = b/a;
+        int64_t b = context.vals.top();
+        int64_t res ;
+        SafeDivide(b,a,res);
         context.vals.pop();
         context.vals.push(res);
     }
@@ -127,10 +112,11 @@ void Mul::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.size()<2) {
         throw MulException();
     } else {
-        SafeInt<int64_t> a = context.vals.top();
+        int64_t a = context.vals.top();
         context.vals.pop();
-        SafeInt<int64_t> b = context.vals.top();
-        SafeInt<int64_t> res = b*a;
+        int64_t b = context.vals.top();
+        int64_t res;
+        SafeMultiply(a,b,res);
         context.vals.pop();
         context.vals.push(res);
     }
@@ -206,7 +192,6 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
 
     if (kind == 1){
         while (std::getline(std::cin,command_line)) {
-
             if (command_line.empty()){
                 continue;
             }

@@ -23,8 +23,10 @@ int main(int argnum, char *argv[]){
                 help(std::cerr, "Can't find file");
                 return 1;
             }
-            if (ty.peek() == EOF) {
-                return 0;
+             else {
+                if (ty.peek() == EOF) {
+                    return 0;
+                }
             }
         }
     procces(test_s,ty,argnum);
