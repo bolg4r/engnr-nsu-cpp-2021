@@ -7,21 +7,10 @@
 #include <fstream>
 
 
-/*Pop::Pop(std::string &args) : Comm(args) {}
 
-void Pop::comm(ContextExecution &context_execution) {
-    if (!context_execution.stack.empty()) {
-        context_execution.stack.pop();
-    } else {
-        throw PopException();
-    }
-}
-*/
 bool is_number(const std::string &str) {
-        for (char const &c : str) {
-            if (std::isdigit(c) == 0) return false;
-        }
-        return true;
+    return !s.empty() && (std::all_of(s.begin(), s.end(), [](char c) { return ::isdigit(c); }) ||
+                          (s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return ::isdigit(c); })));
 }
 
 void Pop::act(ContextExecution &context, std::vector<std::string> str) {
