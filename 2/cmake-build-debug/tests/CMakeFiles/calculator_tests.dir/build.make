@@ -92,6 +92,7 @@ calculator_tests_EXTERNAL_OBJECTS =
 
 tests/calculator_tests.exe: tests/CMakeFiles/calculator_tests.dir/tests.cpp.obj
 tests/calculator_tests.exe: tests/CMakeFiles/calculator_tests.dir/build.make
+tests/calculator_tests.exe: libcalc_lib.a
 tests/calculator_tests.exe: lib/libgtestd.a
 tests/calculator_tests.exe: lib/libgmock_maind.a
 tests/calculator_tests.exe: lib/libgmockd.a

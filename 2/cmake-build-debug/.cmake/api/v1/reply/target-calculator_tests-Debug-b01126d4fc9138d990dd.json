@@ -104,7 +104,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "gmock::@d24f781d804ac047b25e"
+			"id" : "calc_lib::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gmock_main::@d24f781d804ac047b25e"
 		},
 		{
 			"backtrace" : 2,
@@ -112,7 +116,7 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "gmock_main::@d24f781d804ac047b25e"
+			"id" : "gmock::@d24f781d804ac047b25e"
 		}
 	],
 	"id" : "calculator_tests::@a44f0ac069e85531cdee",
@@ -130,7 +134,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-lCalculator",
+				"fragment" : "..\\libcalc_lib.a",
 				"role" : "libraries"
 			},
 			{

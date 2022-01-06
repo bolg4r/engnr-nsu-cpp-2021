@@ -220,8 +220,8 @@ CMakeFiles/Calculator.dir/clean:
 # Target rules for target libs/googletest/googlemock/CMakeFiles/gmock_main.dir
 
 # All Build rule for target.
-libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all: libs/googletest/googlemock/CMakeFiles/gmock.dir/all
 libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all: libs/googletest/googletest/CMakeFiles/gtest.dir/all
+libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all: libs/googletest/googlemock/CMakeFiles/gmock.dir/all
 	$(MAKE) $(MAKESILENT) -f libs\googletest\googlemock\CMakeFiles\gmock_main.dir\build.make libs/googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f libs\googletest\googlemock\CMakeFiles\gmock_main.dir\build.make libs/googletest/googlemock/CMakeFiles/gmock_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target gmock_main"
@@ -325,9 +325,10 @@ libs/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 # Target rules for target tests/CMakeFiles/calculator_tests.dir
 
 # All Build rule for target.
-tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock.dir/all
-tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/calculator_tests.dir/all: CMakeFiles/calc_lib.dir/all
 tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all
+tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock.dir/all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\calculator_tests.dir\build.make tests/CMakeFiles/calculator_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\calculator_tests.dir\build.make tests/CMakeFiles/calculator_tests.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target calculator_tests"
@@ -335,7 +336,7 @@ tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/calculator_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug\CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/calculator_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug\CMakeFiles 0
 .PHONY : tests/CMakeFiles/calculator_tests.dir/rule

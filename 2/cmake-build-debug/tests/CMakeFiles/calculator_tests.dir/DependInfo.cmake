@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "C:/study/pluss/engnr-nsu-cpp-2021/2/cmake-build-debug/CMakeFiles/calc_lib.dir/DependInfo.cmake"
   "C:/study/pluss/engnr-nsu-cpp-2021/2/cmake-build-debug/libs/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "C:/study/pluss/engnr-nsu-cpp-2021/2/cmake-build-debug/libs/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "C:/study/pluss/engnr-nsu-cpp-2021/2/cmake-build-debug/libs/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
