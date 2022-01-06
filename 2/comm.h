@@ -57,8 +57,6 @@ public:
 };
 
 
-
-
 class Push: public Comm{
     void act(ContextExecution& context,  std::vector<std::string> str) override;
 };
@@ -105,6 +103,11 @@ public:
 class Plus: public Comm{
     void act(ContextExecution& context,  std::vector<std::string> str) override;
 };
+
+class Comment: public Comm{
+    void act(ContextExecution& context,  std::vector<std::string> str) override;
+};
+
 
 class PlusException : public MainException {
 public:

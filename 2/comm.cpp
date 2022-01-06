@@ -127,10 +127,14 @@ void Read::act(ContextExecution &context, std::vector<std::string> str) {
     context.vals.push(std::stoll(str[1]));
 }
 
+void Comment::act(ContextExecution &context, std::vector<std::string> str) {
+
+}
+
 
 
 Comm *Obrer::obr(std::vector<std::string> commands) {
-    if (commands[0] == "#") {return nullptr;}
+    if (commands[0] == "#") {return new Comment();}
     if (commands[0] == "POP") {return new Pop();}
     if (commands[0] == "PUSH") {return new Push();}
     if (commands[0] == "PEEK") {return new Peek();}
