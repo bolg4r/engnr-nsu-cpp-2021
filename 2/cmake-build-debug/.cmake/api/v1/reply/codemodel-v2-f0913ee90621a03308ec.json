@@ -22,7 +22,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				},
 				{
@@ -60,7 +61,7 @@
 						4
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-libs.googletest.googlemock-Debug-c329f1cb648db2ae3bec.json",
+					"jsonFile" : "directory-libs.googletest.googlemock-Debug-45d4da841689f3fd93aa.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -70,14 +71,14 @@
 					"source" : "libs/googletest/googlemock",
 					"targetIndexes" : 
 					[
-						2,
-						3
+						3,
+						4
 					]
 				},
 				{
 					"build" : "libs/googletest/googletest",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-libs.googletest.googletest-Debug-622c8f0f2b7f8b4be6a7.json",
+					"jsonFile" : "directory-libs.googletest.googletest-Debug-d4bab80631913d71d84e.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -87,8 +88,8 @@
 					"source" : "libs/googletest/googletest",
 					"targetIndexes" : 
 					[
-						4,
-						5
+						5,
+						6
 					]
 				},
 				{
@@ -103,7 +104,7 @@
 					"source" : "tests",
 					"targetIndexes" : 
 					[
-						1
+						2
 					]
 				}
 			],
@@ -125,7 +126,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				},
 				{
@@ -161,8 +163,8 @@
 					"parentIndex" : 2,
 					"targetIndexes" : 
 					[
-						2,
-						3
+						3,
+						4
 					]
 				},
 				{
@@ -174,8 +176,8 @@
 					"parentIndex" : 3,
 					"targetIndexes" : 
 					[
-						4,
-						5
+						5,
+						6
 					]
 				}
 			],
@@ -184,14 +186,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Calculator::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Calculator-Debug-fb97d6ebb4446b1aefdb.json",
+					"jsonFile" : "target-Calculator-Debug-7cc447695670b2bae820.json",
 					"name" : "Calculator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "calc_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-calc_lib-Debug-55d2154ff2e41dde10d2.json",
+					"name" : "calc_lib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "calculator_tests::@a44f0ac069e85531cdee",
-					"jsonFile" : "target-calculator_tests-Debug-f2fb50d99af2440037e4.json",
+					"jsonFile" : "target-calculator_tests-Debug-ba1c9f4ba34fc465a498.json",
 					"name" : "calculator_tests",
 					"projectIndex" : 0
 				},
@@ -205,7 +214,7 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "gmock_main::@d24f781d804ac047b25e",
-					"jsonFile" : "target-gmock_main-Debug-aa004f1ab35fa7232a94.json",
+					"jsonFile" : "target-gmock_main-Debug-d0c18af8e7a59a90119c.json",
 					"name" : "gmock_main",
 					"projectIndex" : 3
 				},

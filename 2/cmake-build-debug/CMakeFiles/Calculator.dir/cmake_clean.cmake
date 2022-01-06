@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Calculator.dir/comm.cpp.obj"
-  "CMakeFiles/Calculator.dir/comm.cpp.obj.d"
   "CMakeFiles/Calculator.dir/main.cpp.obj"
   "CMakeFiles/Calculator.dir/main.cpp.obj.d"
   "Calculator.exe"

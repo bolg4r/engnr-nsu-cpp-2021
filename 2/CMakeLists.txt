@@ -10,6 +10,7 @@ enable_testing()
 include_directories(libs/SafeInt/Test)
 include_directories(libs/googletest/googletest/include)
 
-
-add_executable(Calculator main.cpp comm.cpp comm.h)
+add_library(calc_lib STATIC comm.cpp comm.h )
+add_executable(Calculator main.cpp)
+target_link_libraries(Calculator calc_lib)
 

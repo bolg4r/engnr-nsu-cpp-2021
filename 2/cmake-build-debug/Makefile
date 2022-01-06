@@ -64,6 +64,40 @@ CMAKE_BINARY_DIR = C:\study\pluss\engnr-nsu-cpp-2021\2\cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -83,40 +117,6 @@ test:
 # Special rule for the target test
 test/fast: test
 .PHONY : test/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -169,6 +169,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named calc_lib
+
+# Build rule for target.
+calc_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 calc_lib
+.PHONY : calc_lib
+
+# fast build rule for target.
+calc_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\calc_lib.dir\build.make CMakeFiles/calc_lib.dir/build
+.PHONY : calc_lib/fast
 
 #=============================================================================
 # Target rules for targets named Calculator
@@ -253,7 +266,7 @@ comm.obj: comm.cpp.obj
 
 # target to build an object file
 comm.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/comm.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\calc_lib.dir\build.make CMakeFiles/calc_lib.dir/comm.cpp.obj
 .PHONY : comm.cpp.obj
 
 comm.i: comm.cpp.i
@@ -261,7 +274,7 @@ comm.i: comm.cpp.i
 
 # target to preprocess a source file
 comm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/comm.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\calc_lib.dir\build.make CMakeFiles/calc_lib.dir/comm.cpp.i
 .PHONY : comm.cpp.i
 
 comm.s: comm.cpp.s
@@ -269,7 +282,7 @@ comm.s: comm.cpp.s
 
 # target to generate assembly for a file
 comm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/comm.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\calc_lib.dir\build.make CMakeFiles/calc_lib.dir/comm.cpp.s
 .PHONY : comm.cpp.s
 
 main.obj: main.cpp.obj
@@ -310,6 +323,7 @@ help:
 	@echo ... rebuild_cache
 	@echo ... test
 	@echo ... Calculator
+	@echo ... calc_lib
 	@echo ... calculator_tests
 	@echo ... gmock
 	@echo ... gmock_main

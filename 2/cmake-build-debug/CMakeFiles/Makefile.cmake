@@ -79,6 +79,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/calc_lib.dir/DependInfo.cmake"
   "CMakeFiles/Calculator.dir/DependInfo.cmake"
   "libs/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "libs/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
