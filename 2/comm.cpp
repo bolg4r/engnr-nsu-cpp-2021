@@ -115,7 +115,7 @@ void Print::act(ContextExecution &context, std::vector<std::string> str) {
     if (context.vals.empty()){
         throw PrintException();
     } else{
-        std::cout<<std::to_string((int64_t) context.vals.top()) << std::endl;
+        std::cout<<(int64_t) context.vals.top() << std::endl;
     }
 }
 

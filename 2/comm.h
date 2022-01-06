@@ -44,13 +44,6 @@ class Pop final: public Comm{
     void act(ContextExecution& context,  std::vector<std::string> str) override;
 };
 
-/*class Pop : public Comm {
-public:
-    explicit Pop(std::string &args);
-
-    void comm(ContextExecution &context_execution) override;
-
-};*/
 
 
 class PopException : public MainException {
@@ -58,19 +51,13 @@ public:
     PopException() {
         text += "pop exception";
     }
-    PopException(std::string text_);
     std::string what() override{
         return text;
     }
 };
 
 
-/*class Push : public Comm {
-public:
-    explicit Push(std::string &args);
-    void
-    comm(ContextExecution &context_execution) override;
-};*/
+
 
 class Push: public Comm{
     void act(ContextExecution& context,  std::vector<std::string> str) override;
@@ -82,7 +69,6 @@ public:
     PushException() {
         text += "pop exception";
     }
-    PushException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -97,7 +83,6 @@ public:
     PeekException() {
         text += "peek exception";
     }
-    PeekException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -112,7 +97,6 @@ public:
     AbsException() {
         text += "abs exception";
     }
-    AbsException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -127,7 +111,6 @@ public:
     PlusException() {
         text += "Plus exception";
     }
-    PlusException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -142,7 +125,6 @@ public:
     MinusException() {
         text += "Minus exception";
     }
-    MinusException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -158,7 +140,6 @@ public:
     DivException() {
         text += "Div exception";
     }
-    DivException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -170,7 +151,6 @@ public:
     ZeroException() {
         text += "ZeroException";
     }
-    ZeroException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -186,7 +166,6 @@ public:
     MulException() {
         text += "Mul exception";
     }
-    MulException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -205,7 +184,6 @@ public:
     ReadException() {
         text += "Read exception";
     }
-    ReadException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -217,7 +195,6 @@ public:
     PrintException() {
         text += "Print exception";
     }
-    PrintException(std::string text_);
     std::string what() override{
         return text;
     }
@@ -228,7 +205,6 @@ public:
     NoCommandException() {
         text += "NoCommand exception";
     }
-    NoCommandException(std::string text_);
     std::string what() override{
         return text;
     }
