@@ -186,6 +186,9 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
 
     if (kind == 2){
         while (getline(ty, command_line)) {
+            if (command_line.empty()){
+                continue;
+            }
             std::stringstream str_new(command_line);
             std::vector<std::string> command; //empty lines(?)
             std::stringstream str(command_line);
@@ -203,6 +206,10 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
 
     if (kind == 1){
         while (std::getline(std::cin,command_line)) {
+
+            if (command_line.empty()){
+                continue;
+            }
             std::stringstream str_new(command_line);
             std::vector<std::string> command; //empty lines(?)
             std::stringstream str(command_line);
@@ -219,6 +226,9 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
     }
     if (kind == 3){
         while (std::getline(test_s,command_line)) {
+            if (command_line.empty()){
+                continue;
+            }
             std::stringstream str_new(command_line);
             std::vector<std::string> command; //empty lines(?)
             std::stringstream str(command_line);

@@ -6,7 +6,7 @@
 
 **После сборки**
 
-`./Calculator -file <path>`
+`./Calculator -file <path>`  
 `./Calculator ` 
 
 **Возможные команды:**  

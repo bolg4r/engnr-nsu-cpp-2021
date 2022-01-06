@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libcalc_lib.a CMakeFiles/calc_lib.dir/comm.cpp.obj
+C:\MinGW\bin\ranlib.exe libcalc_lib.a
