@@ -8,7 +8,7 @@
 
 
 
-bool is_number(const std::string &str) {
+bool is_number(const std::string &s) {
     return !s.empty() && (std::all_of(s.begin(), s.end(), [](char c) { return ::isdigit(c); }) ||
                           (s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return ::isdigit(c); })));
 }

@@ -10,6 +10,7 @@
 #include <stack>
 #include <map>
 #include <sstream>
+#include <algorithm>
 #include <vector>
 #include <iostream>
 #include "libs/googletest/googletest/include/gtest/gtest.h"
