@@ -31,7 +31,7 @@ void Push::act(ContextExecution &context, std::vector<std::string> str) {
 }
 
 void Peek::act(ContextExecution &context, std::vector<std::string> str) {
-    if (context.vals.empty() or str.size() < 2) {
+    if (context.vals.empty() || str.size() < 2) {
         throw PeekException();
     } else
         context.vars[str[1]] = context.vals.top();
