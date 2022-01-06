@@ -20,9 +20,6 @@ void Pop::act(ContextExecution &context, std::vector<std::string> str) {
         throw PopException();
 }
 
-PopException::PopException(std::string exc) {
-    text = exc;
-}
 
 
 void Push::act(ContextExecution &context, std::vector<std::string> str) {
