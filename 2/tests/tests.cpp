@@ -8,8 +8,7 @@
 
 
 TEST(two_plus_two, test_1) {
-std::string test = "#Nikita Provotorov the best\n"
-                   "PUSH 2\n"
+std::string test = "PUSH 2\n"
                    "PUSH 2\n"
                    "PLUS\n"
                    "PRINT";
@@ -24,8 +23,7 @@ EXPECT_EQ(output, result);
 }
 
 TEST(medium, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 2\n"
+    std::string test = "PUSH 2\n"
                        "PUSH 10\n"
                        "PEEK var\n" //10
                        "DIV\n" //5
@@ -50,8 +48,7 @@ TEST(medium, test_1) {
 }
 
 TEST(Plus_exc, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 2\n"
+    std::string test = "PUSH 2\n"
                        "PLUS\n"
                        "PRINT\n";
     testing::internal::CaptureStdout();
@@ -62,8 +59,7 @@ TEST(Plus_exc, test_1) {
 }
 
 TEST(Some_exc, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 2\n"
+    std::string test = "PUSH 2\n"
                        "Push 4\n"
                        "NikitaTheBest\n"
                        "MUL\n";
@@ -77,8 +73,7 @@ TEST(Some_exc, test_1) {
 }
 
 TEST(Really_big, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 942493935452545479986\n"
+    std::string test = "PUSH 942493935452545479986\n"
                        "PUSH 8996979999759659569755\n"
                        "PLUS\n";
     testing::internal::CaptureStdout();
@@ -89,8 +84,7 @@ TEST(Really_big, test_1) {
 }
 
 TEST(Push_exc, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH \n"
+    std::string test = "PUSH\n"
                        "Pop\n"
                        "MUL\n";
     testing::internal::CaptureStdout();
@@ -102,8 +96,7 @@ TEST(Push_exc, test_1) {
 }
 
 TEST(Over_exc, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 853373436854\n"
+    std::string test = "PUSH 853373436854\n"
                        "PUSH 20898131\n"
                        "MUL\n"
                        "PRINT\n";
@@ -116,8 +109,7 @@ TEST(Over_exc, test_1) {
 }
 
 TEST(Over_exc1, test_1) {
-    std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH -9223372036854775808\n"
+    std::string test ="PUSH -9223372036854775808\n"
                        "ABS\n"
                        "PRINT\n";
     testing::internal::CaptureStdout();

@@ -326,8 +326,8 @@ libs/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 
 # All Build rule for target.
 tests/CMakeFiles/calculator_tests.dir/all: CMakeFiles/calc_lib.dir/all
-tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock.dir/all
+tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 tests/CMakeFiles/calculator_tests.dir/all: libs/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\calculator_tests.dir\build.make tests/CMakeFiles/calculator_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\calculator_tests.dir\build.make tests/CMakeFiles/calculator_tests.dir/build
