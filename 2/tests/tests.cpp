@@ -51,10 +51,8 @@ TEST(Plus_exc, test_1) {
     std::string test = "PUSH 2\n"
                        "PLUS\n"
                        "PRINT\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
-
     EXPECT_THROW(procces(in_s, in, 3), PlusException);
 }
 
@@ -63,7 +61,6 @@ TEST(Some_exc, test_1) {
                        "Push 4\n"
                        "NikitaTheBest\n"
                        "MUL\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
     procces(in_s, in, 3);
