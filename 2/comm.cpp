@@ -162,100 +162,46 @@ Comm *Obrer::obr(std::vector<std::string> &commands) {
 
 }
 
-void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
+void pre (std::istream &sr) {
     std::string command_line;
     std::vector<std::string> ph;
     Comm *calc_command;
     Obrer proccessor;
     ContextExecution data;
-    std::basic_istream sr;
-    if (kind ==1){
-        sr = std::cin;
-    }
-    if (kind ==2){
-        std::istream &sr = ty;
-    }
-    if (kind ==3){
-        std::istream &sr = test_s;
-    }
     while (getline(sr, command_line)) {
-        if (command_line.empty()){
+        if (command_line.empty()) {
             continue;
         }
         std::stringstream str_new(command_line);
         std::vector<std::string> command; //empty lines(?)
         std::stringstream str(command_line);
         std::string com;
-        while (getline(str,com,' ')){
+        while (getline(str, com, ' ')) {
             ph.push_back(com);
         }
         calc_command = proccessor.obr(ph);
-        calc_command->act(data,ph);
+        calc_command->act(data, ph);
         ph.clear();
         delete calc_command;
 
 
-
-    /*if (kind == 2){
-        while (getline(ty, command_line)) {
-            if (command_line.empty()){
-                continue;
-            }
-            std::stringstream str_new(command_line);
-            std::vector<std::string> command; //empty lines(?)
-            std::stringstream str(command_line);
-            std::string com;
-            while (getline(str,com,' ')){
-                ph.push_back(com);
-            }
-            calc_command = proccessor.obr(ph);
-            calc_command->act(data,ph);
-            ph.clear();
-            delete calc_command;
-
-        }
     }
-
-    if (kind == 1){
-        while (std::getline(std::cin,command_line)) {
-            if (command_line.empty()){
-                continue;
-            }
-            std::stringstream str_new(command_line);
-            std::vector<std::string> command; //empty lines(?)
-            std::stringstream str(command_line);
-            std::string com;
-            while (getline(str,com,' ')){
-                ph.push_back(com);
-            }
-            calc_command = proccessor.obr(ph);
-            calc_command->act(data,ph);
-            ph.clear();
-            delete calc_command;
-
-        }
-    }
-    if (kind == 3){
-        while (std::getline(test_s,command_line)) {
-            if (command_line.empty()){
-                continue;
-            }
-            std::stringstream str_new(command_line);
-            std::vector<std::string> command; //empty lines(?)
-            std::stringstream str(command_line);
-            std::string com;
-            while (getline(str,com,' ')){
-                ph.push_back(com);
-            }
-            calc_command = proccessor.obr(ph);
-            calc_command->act(data,ph);
-            ph.clear();
-            delete calc_command;
-
-        }
-
-    }*/
 }
+
+    void procces(std::stringstream &test_s, std::ifstream &ty, int kind) {
+
+
+        if (kind == 1) {
+            pre(std::cin);
+        }
+        if (kind == 2) {
+            pre(ty);
+        }
+        if (kind == 3) {
+            pre(test_s);
+        }
+    }
+
 
 
 

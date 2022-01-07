@@ -241,7 +241,7 @@ public:
 };
 
 
-
+void pre(std::istream &sr);
 void procces(std::stringstream &test_s, std::ifstream &ty, int argnum);
 
 
