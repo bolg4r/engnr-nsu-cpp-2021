@@ -1,19 +1,19 @@
 add_executable(SafeInt_Test
-    AddVerify.cpp
-    CastVerify.cpp
-    DivVerify.cpp
-    IncDecVerify.cpp
-    ModVerify.cpp
-    MultVerify.cpp
-    SubVerify.cpp
-    TestMain.cpp
-    TestMain.h)
+        AddVerify.cpp
+        CastVerify.cpp
+        DivVerify.cpp
+        IncDecVerify.cpp
+        ModVerify.cpp
+        MultVerify.cpp
+        SubVerify.cpp
+        TestMain.cpp
+        TestMain.h)
 target_link_libraries(SafeInt_Test PRIVATE SafeInt)
 
 add_executable(SafeInt_CompileTest
-    CleanCompile.cpp
-    CompileTest.cpp
-    ConstExpr.cpp)
+        CleanCompile.cpp
+        CompileTest.cpp
+        ConstExpr.cpp)
 target_link_libraries(SafeInt_CompileTest PRIVATE SafeInt)
 
 if(SAFEINT_SANITIZE)
