@@ -88,4 +88,43 @@ TEST(Really_big, test_1) {
     EXPECT_THROW(procces(in_s, in, 3), SafeIntException);
 }
 
+TEST(Push_exc, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH \n"
+                       "Pop\n"
+                       "MUL\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+    procces(in_s, in, 3);
+    EXPECT_THROW(procces(in_s, in, 3), PushException);
+
+}
+
+TEST(Over_exc, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH 853373436854 \n"
+                       "PUSH 20898131\n"
+                       "MUL\n"
+                       "PRINT\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+    procces(in_s, in, 3);
+    EXPECT_THROW(procces(in_s, in, 3), OverException);
+
+}
+
+TEST(Over_exc1, test_1) {
+    std::string test = "#Nikita Provotorov the best\n"
+                       "PUSH -9223372036854775808\n"
+                       "ABS\n"
+                       "PRINT\n";
+    testing::internal::CaptureStdout();
+    std::stringstream in_s(test);
+    std::ifstream in;
+    procces(in_s, in, 3);
+    EXPECT_THROW(procces(in_s, in, 3), OverException);
+
+}
 

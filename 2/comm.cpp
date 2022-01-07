@@ -13,7 +13,7 @@ bool is_number(const std::string &s) {
                           (s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return ::isdigit(c); })));
 }
 
-void Pop::act(ContextExecution &context, std::vector<std::string> str) {
+void Pop::act(ContextExecution &context, std::vector<std::string> &str) {
     if (!context.vals.empty()) {
         context.vals.pop();
     } else
@@ -22,35 +22,44 @@ void Pop::act(ContextExecution &context, std::vector<std::string> str) {
 
 
 
-void Push::act(ContextExecution &context, std::vector<std::string> str) {
-    if (is_number(str[1])) {
-        context.vals.push(std::stoll(str[1]));
-    } else {
-        context.vals.push(context.vars[str[1]]);  //add exception(?)
+void Push::act(ContextExecution &context, std::vector<std::string> &str) {
+    try {
+        if (str.size() < 2) {
+            throw PushException();
+        }
+        if (is_number(str[1])) {
+            context.vals.push(std::stoll(str[1]));
+        } else {
+            context.vals.push(context.vars[str[1]]);  //add exception(?)
+        }
+    } catch (std::out_of_range){
+        throw PushException();
     }
+
 }
 
-void Peek::act(ContextExecution &context, std::vector<std::string> str) {
+void Peek::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.empty() || str.size() < 2) {
         throw PeekException();
     } else
         context.vars[str[1]] = context.vals.top();
 }
 
-void Abs::act(ContextExecution &context, std::vector<std::string> str) {
+void Abs::act(ContextExecution &context, std::vector<std::string> &) {
     if (context.vals.empty()) {
         throw AbsException();
     } else {
         int64_t a = context.vals.top();
         if (a < 0) {
             SafeMultiply(a,-1,a);
+            if (!SafeMultiply(a,-1,a)){throw OverException();}
         }
         context.vals.pop();
         context.vals.push(a);
     }
 }
 
-void Plus::act(ContextExecution &context, std::vector<std::string> str) {
+void Plus::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.size()<2) {
         throw PlusException();
     } else {
@@ -59,13 +68,14 @@ void Plus::act(ContextExecution &context, std::vector<std::string> str) {
         int64_t b = context.vals.top();
         int64_t res;
         SafeAdd(a,b,res);
+        if (!SafeAdd(a,b,res)){throw OverException();}
         context.vals.pop();
         context.vals.push(res);
     }
 }
 
 
-void Minus::act(ContextExecution &context, std::vector<std::string> str) {
+void Minus::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.size()<2) {
         throw MinusException();
     } else {
@@ -74,12 +84,13 @@ void Minus::act(ContextExecution &context, std::vector<std::string> str) {
         int64_t b = context.vals.top();
         int64_t res;
         SafeSubtract(b,a,res);
+        if (!SafeSubtract(b,a,res)){throw OverException();}
         context.vals.pop();
         context.vals.push(res);
     }
 }
 
-void Div::act(ContextExecution &context, std::vector<std::string> str) {
+void Div::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.size()<2) {
         throw DivException();
     } else {
@@ -89,12 +100,13 @@ void Div::act(ContextExecution &context, std::vector<std::string> str) {
         int64_t b = context.vals.top();
         int64_t res ;
         SafeDivide(b,a,res);
+        if (!SafeDivide(b,a,res)) { throw OverException();}
         context.vals.pop();
         context.vals.push(res);
     }
 }
 
-void Mul::act(ContextExecution &context, std::vector<std::string> str) {
+void Mul::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.size()<2) {
         throw MulException();
     } else {
@@ -103,12 +115,13 @@ void Mul::act(ContextExecution &context, std::vector<std::string> str) {
         int64_t b = context.vals.top();
         int64_t res;
         SafeMultiply(a,b,res);
+        if(!SafeMultiply(a,b,res)) {throw OverException();}
         context.vals.pop();
         context.vals.push(res);
     }
 }
 
-void Print::act(ContextExecution &context, std::vector<std::string> str) {
+void Print::act(ContextExecution &context, std::vector<std::string> &str) {
     if (context.vals.empty()){
         throw PrintException();
     } else{
@@ -117,7 +130,7 @@ void Print::act(ContextExecution &context, std::vector<std::string> str) {
 }
 
 
-void Read::act(ContextExecution &context, std::vector<std::string> str) {
+void Read::act(ContextExecution &context, std::vector<std::string> &str) {
     if (str.size()<2) {
         throw ReadException();
     }
@@ -127,13 +140,13 @@ void Read::act(ContextExecution &context, std::vector<std::string> str) {
     context.vals.push(std::stoll(str[1]));
 }
 
-void Comment::act(ContextExecution &context, std::vector<std::string> str) {
+void Comment::act(ContextExecution &context, std::vector<std::string> &str) {
 
 }
 
 
 
-Comm *Obrer::obr(std::vector<std::string> commands) {
+Comm *Obrer::obr(std::vector<std::string> &commands) {
     if (commands[0] == "#") {return new Comment();}
     if (commands[0] == "POP") {return new Pop();}
     if (commands[0] == "PUSH") {return new Push();}
@@ -155,7 +168,35 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
     Comm *calc_command;
     Obrer proccessor;
     ContextExecution data;
-    if (kind == 2){
+    std::basic_istream sr;
+    if (kind ==1){
+        sr = std::cin;
+    }
+    if (kind ==2){
+        std::istream &sr = ty;
+    }
+    if (kind ==3){
+        std::istream &sr = test_s;
+    }
+    while (getline(sr, command_line)) {
+        if (command_line.empty()){
+            continue;
+        }
+        std::stringstream str_new(command_line);
+        std::vector<std::string> command; //empty lines(?)
+        std::stringstream str(command_line);
+        std::string com;
+        while (getline(str,com,' ')){
+            ph.push_back(com);
+        }
+        calc_command = proccessor.obr(ph);
+        calc_command->act(data,ph);
+        ph.clear();
+        delete calc_command;
+
+
+
+    /*if (kind == 2){
         while (getline(ty, command_line)) {
             if (command_line.empty()){
                 continue;
@@ -213,7 +254,7 @@ void procces(std::stringstream &test_s, std::ifstream& ty, int kind) {
 
         }
 
-    }
+    }*/
 }
 
 

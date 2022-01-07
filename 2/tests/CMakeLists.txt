@@ -13,3 +13,5 @@ target_include_directories(calculator_tests
         )
 
 enable_testing()
+
+add_test(NAME google_test COMMAND calculator_tests)

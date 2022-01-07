@@ -27,7 +27,7 @@ struct ContextExecution {
 
 class Comm {
 public:
-    virtual void act(ContextExecution &context_execution, std::vector<std::string> str) = 0;
+    virtual void act(ContextExecution &context_execution, std::vector<std::string> &str) = 0;
     virtual ~Comm() = default;
 };
 
@@ -41,7 +41,7 @@ public:
 
 
 class Pop final: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 
@@ -56,16 +56,27 @@ public:
     }
 };
 
+class OverException : public MainException {
+public:
+    OverException() {
+        text += "Overflow exception";
+    }
+    std::string what() override{
+        return text;
+    }
+};
+
+
 
 class Push: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 
 class PushException : public MainException {
 public:
     PushException() {
-        text += "pop exception";
+        text += "push exception";
     }
     std::string what() override{
         return text;
@@ -73,7 +84,7 @@ public:
 };
 
 class Peek: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class PeekException : public MainException {
@@ -87,7 +98,7 @@ public:
 };
 
 class Abs: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class AbsException : public MainException {
@@ -101,11 +112,11 @@ public:
 };
 
 class Plus: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class Comment: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 
@@ -120,7 +131,7 @@ public:
 };
 
 class Minus: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class MinusException : public MainException {
@@ -135,7 +146,7 @@ public:
 
 
 class Div: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class DivException : public MainException {
@@ -160,7 +171,7 @@ public:
 };
 
 class Mul: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 
@@ -175,11 +186,11 @@ public:
 };
 
 class Print: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class Read: public Comm{
-    void act(ContextExecution& context,  std::vector<std::string> str) override;
+    void act(ContextExecution& context,  std::vector<std::string> &str) override;
 };
 
 class ReadException : public MainException {
@@ -219,14 +230,14 @@ public:
 
     Calc() = default;
 
-    virtual Comm *obr(std::vector<std::string> commands) = 0;
+    virtual Comm *obr(std::vector<std::string> &commands) = 0;
 
 };
 
 
 class Obrer : Calc {
 public:
-    Comm *obr( std::vector<std::string> commands) override;
+    Comm *obr( std::vector<std::string> &commands) override;
 };
 
 
