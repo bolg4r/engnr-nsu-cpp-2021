@@ -42,7 +42,7 @@ TEST(medium, test_1) {
     testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
-    std::string result = "35\n";
+    std::string result = "70\n";
     procces(in_s, in, 3);
     std::string output = testing::internal::GetCapturedStdout();
     std::cout << output;
@@ -85,7 +85,7 @@ TEST(Really_big, test_1) {
     std::stringstream in_s(test);
     std::ifstream in;
 
-    EXPECT_THROW(procces(in_s, in, 3), SafeIntException);
+    EXPECT_THROW(procces(in_s, in, 3), PushException);
 }
 
 TEST(Push_exc, test_1) {
@@ -103,7 +103,7 @@ TEST(Push_exc, test_1) {
 
 TEST(Over_exc, test_1) {
     std::string test = "#Nikita Provotorov the best\n"
-                       "PUSH 853373436854 \n"
+                       "PUSH 853373436854\n"
                        "PUSH 20898131\n"
                        "MUL\n"
                        "PRINT\n";
