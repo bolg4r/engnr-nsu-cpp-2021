@@ -7,7 +7,7 @@
 #include "../comm.h"
 
 
-TEST(two_plus_two, test_1) {
+TEST(test1, two_plus_two) {
 std::string test = "PUSH 2\n"
                    "PUSH 2\n"
                    "PLUS\n"
@@ -22,7 +22,7 @@ std::cout << output;
 EXPECT_EQ(output, result);
 }
 
-TEST(medium, test_1) {
+TEST(test2, mid) {
     std::string test = "PUSH 2\n"
                        "PUSH 10\n"
                        "PEEK var\n" //10
@@ -47,7 +47,7 @@ TEST(medium, test_1) {
     EXPECT_EQ(output, result);
 }
 
-TEST(Plus_exc, test_1) {
+TEST(test3, PlusException) {
     std::string test = "PUSH 2\n"
                        "PLUS\n"
                        "PRINT\n";
@@ -56,9 +56,9 @@ TEST(Plus_exc, test_1) {
     EXPECT_THROW(procces(in_s, in, 3), PlusException);
 }
 
-TEST(Some_exc, test_1) {
+TEST(test4, NoCommandException) {
     std::string test = "PUSH 2\n"
-                       "Push 4\n"
+                       "PUSH 4\n"
                        "NikitaTheBest\n"
                        "MUL\n";
     std::stringstream in_s(test);
@@ -70,7 +70,7 @@ TEST(Some_exc, test_1) {
 
 
 
-TEST(Push_exc, test_1) {
+TEST(test5, PushException) {
     std::string test = "PUSH\n";
 
     std::stringstream in_s(test);
@@ -80,7 +80,7 @@ TEST(Push_exc, test_1) {
 
 }
 
-TEST(Over_exc, test_1) {
+TEST(test6, OverException) {
     std::string test = "PUSH 853373436854\n"
                        "PUSH 20898131\n"
                        "MUL\n"
@@ -92,7 +92,7 @@ TEST(Over_exc, test_1) {
 
 }
 
-TEST(Over_exc1, test_1) {
+TEST(test7, OverException) {
     std::string test ="PUSH -9223372036854775808\n"
                        "ABS\n"
                        "PRINT\n";
@@ -103,3 +103,7 @@ TEST(Over_exc1, test_1) {
 
 }
 
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
