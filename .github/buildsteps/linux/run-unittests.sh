@@ -12,7 +12,7 @@ ctest --version
 echo
 echo '======================== Unit testing of debug ========================='
 cd 'debug'          || exit $?
-ctest               || exit $?
+ctest -V              || exit $?
 cd '..'             || exit $?
 
 echo
