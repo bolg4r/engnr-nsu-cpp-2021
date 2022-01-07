@@ -51,7 +51,6 @@ void Abs::act(ContextExecution &context, std::vector<std::string> &) {
     } else {
         int64_t a = context.vals.top();
         if (a < 0) {
-            SafeMultiply(a,-1,a);
             if (!SafeMultiply(a,-1,a)){throw OverException();}
         }
         context.vals.pop();
@@ -67,7 +66,6 @@ void Plus::act(ContextExecution &context, std::vector<std::string> &str) {
         context.vals.pop();
         int64_t b = context.vals.top();
         int64_t res;
-        SafeAdd(a,b,res);
         if (!SafeAdd(a,b,res)){throw OverException();}
         context.vals.pop();
         context.vals.push(res);
@@ -83,7 +81,6 @@ void Minus::act(ContextExecution &context, std::vector<std::string> &str) {
         context.vals.pop();
         int64_t b = context.vals.top();
         int64_t res;
-        SafeSubtract(b,a,res);
         if (!SafeSubtract(b,a,res)){throw OverException();}
         context.vals.pop();
         context.vals.push(res);
@@ -99,7 +96,6 @@ void Div::act(ContextExecution &context, std::vector<std::string> &str) {
         if (a==0) {throw ZeroException();}
         int64_t b = context.vals.top();
         int64_t res ;
-        SafeDivide(b,a,res);
         if (!SafeDivide(b,a,res)) { throw OverException();}
         context.vals.pop();
         context.vals.push(res);
@@ -114,7 +110,6 @@ void Mul::act(ContextExecution &context, std::vector<std::string> &str) {
         context.vals.pop();
         int64_t b = context.vals.top();
         int64_t res;
-        SafeMultiply(a,b,res);
         if(!SafeMultiply(a,b,res)) {throw OverException();}
         context.vals.pop();
         context.vals.push(res);
