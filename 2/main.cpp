@@ -36,7 +36,7 @@ int main(int argnum, char *argv[]){
         return 1;
     }
     catch (SafeIntException &) {
-        std::cerr << "Overflow exception";
+        std::cerr << "Safe exception";
         return 1;
     }
 }

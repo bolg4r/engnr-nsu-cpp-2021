@@ -63,7 +63,6 @@ TEST(test4, NoCommandException) {
                        "MUL\n";
     std::stringstream in_s(test);
     std::ifstream in;
-    procces(in_s, in, 3);
     EXPECT_THROW(procces(in_s, in, 3), NoCommandException);
 
 }
@@ -75,7 +74,6 @@ TEST(test5, PushException) {
 
     std::stringstream in_s(test);
     std::ifstream in;
-    procces(in_s, in, 3);
     EXPECT_THROW(procces(in_s, in, 3), PushException);
 
 }
@@ -87,7 +85,6 @@ TEST(test6, OverException) {
                        "PRINT\n";
     std::stringstream in_s(test);
     std::ifstream in;
-    procces(in_s, in, 3);
     EXPECT_THROW(procces(in_s, in, 3), OverException);
 
 }
@@ -98,7 +95,6 @@ TEST(test7, OverException) {
                        "PRINT\n";
     std::stringstream in_s(test);
     std::ifstream in;
-    procces(in_s, in, 3);
     EXPECT_THROW(procces(in_s, in, 3), OverException);
 
 }
