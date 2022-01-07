@@ -26,12 +26,12 @@ TEST(medium, test_1) {
     std::string test = "PUSH 2\n"
                        "PUSH 10\n"
                        "PEEK var\n" //10
-                       "DIV\n" //5
+                       "DIV\n" //0
                        "PUSH var\n"
                        "PUSH 8\n"
-                       "MUL\n" //40
+                       "MUL\n" //0
                        "PUSH var\n"
-                       "MINUS\n" //-35
+                       "MINUS\n" //70
                        "ABS\n"
                        "PRINT\n";
 
@@ -71,20 +71,11 @@ TEST(Some_exc, test_1) {
 
 }
 
-TEST(Really_big, test_1) {
-    std::string test = "PUSH 942493935452545479986\n"
-                       "PUSH 8996979999759659569755\n"
-                       "PLUS\n";
-    std::stringstream in_s(test);
-    std::ifstream in;
 
-    EXPECT_THROW(procces(in_s, in, 3), PushException);
-}
 
 TEST(Push_exc, test_1) {
-    std::string test = "PUSH\n"
-                       "Pop\n"
-                       "MUL\n";
+    std::string test = "PUSH\n";
+
     std::stringstream in_s(test);
     std::ifstream in;
     procces(in_s, in, 3);
