@@ -11,7 +11,7 @@ TEST(two_plus_two, test_1) {
 std::string test = "PUSH 2\n"
                    "PUSH 2\n"
                    "PLUS\n"
-                   "PRINT";
+                   "PRINT\n";
 testing::internal::CaptureStdout();
 std::stringstream in_s(test);
 std::ifstream in;
@@ -30,10 +30,10 @@ TEST(medium, test_1) {
                        "PUSH var\n"
                        "PUSH 8\n"
                        "MUL\n" //40
-                       "PUSH var"
-                       "MINUS" //-35
-                       "ABS"
-                       "PRINT";
+                       "PUSH var\n"
+                       "MINUS\n" //-35
+                       "ABS\n"
+                       "PRINT\n";
 
 
 
@@ -66,7 +66,6 @@ TEST(Some_exc, test_1) {
     testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
-    std::string result = "4\n";
     procces(in_s, in, 3);
     EXPECT_THROW(procces(in_s, in, 3), NoCommandException);
 
@@ -76,7 +75,6 @@ TEST(Really_big, test_1) {
     std::string test = "PUSH 942493935452545479986\n"
                        "PUSH 8996979999759659569755\n"
                        "PLUS\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
 
@@ -87,7 +85,6 @@ TEST(Push_exc, test_1) {
     std::string test = "PUSH\n"
                        "Pop\n"
                        "MUL\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
     procces(in_s, in, 3);
@@ -100,7 +97,6 @@ TEST(Over_exc, test_1) {
                        "PUSH 20898131\n"
                        "MUL\n"
                        "PRINT\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
     procces(in_s, in, 3);
@@ -112,7 +108,6 @@ TEST(Over_exc1, test_1) {
     std::string test ="PUSH -9223372036854775808\n"
                        "ABS\n"
                        "PRINT\n";
-    testing::internal::CaptureStdout();
     std::stringstream in_s(test);
     std::ifstream in;
     procces(in_s, in, 3);
